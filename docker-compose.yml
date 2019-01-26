@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+
+  apache:
+    image: 'httpd'
+    depends_on:
+      - app
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./apache/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
+      # - ./apache-config/certs:/opt/bitnami/apache/certs
+    tty: true
+
+  app:
+    image: server
+    build:
+      context: .
+    depends_on:
+      - database
+    command: yarn start
+    # ports:
+      # - 3000:3000
+    expose:
+      - 3000
+    volumes:
+      - ./:/usr/src/app:rw
+      - yarn:/home/node/.cache/yarn
+    tty: true
+    environment: 
+      POSTGRES_URL: postgres://database/express
+      JWT_SECRET: lolthisisverysecret
+
+  database:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: test 
+      POSTGRES_USER: postgres
+      POSTGRES_DB: express
+    expose:
+      - 5432
+    tty: true
+    # ports:
+      # - 5432:5432
+
+volumes:
+  node_modules:
+  yarn:
