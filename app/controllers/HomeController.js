@@ -1,8 +1,10 @@
 exports.index = (req, res) => {
-    let attribute = {
-        appName: "Express + Nunjucks",
-        message: "Welcome to odbyt laasdlkfjslkfjalfjknd!"
-    };
+    res.redirect('/login');
 
-    res.render("home/index", { attribute: attribute });
+    // let attribute = {
+    //     appName: "",
+    //     message: "Welcome to odbyt laasdlkasfasfafjslkfjalfjknd!"
+    // };
+
+    // res.render("home/index", { attribute: attribute });
 };

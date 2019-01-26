@@ -20,31 +20,37 @@ services:
       context: .
     depends_on:
       - database
-    command: yarn start
+    command: "yarn start"
     # ports:
       # - 3000:3000
     expose:
       - 3000
     volumes:
-      - ./:/usr/src/app:rw
+      - ./:/usr/src/app:ro
       - yarn:/home/node/.cache/yarn
     tty: true
     environment: 
-      POSTGRES_URL: postgres://database/express
-      JWT_SECRET: lolthisisverysecret
+      DB_USERNAME: express
+      DB_PASSWORD: test
+      DB_NAME: express
+      DB_HOSTNAME: database
+      SECRET: lolthisisverysecret
+      NODE_ENV: development
+      WAIT_HOSTS: database:5432
 
   database:
     image: postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: test 
-      POSTGRES_USER: postgres
+      POSTGRES_USER: express
       POSTGRES_DB: express
     expose:
       - 5432
     tty: true
-    # ports:
-      # - 5432:5432
+    # only for debug puropses
+    ports:
+      - 5432:5432
 
 volumes:
   node_modules:
