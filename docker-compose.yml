@@ -11,7 +11,6 @@ services:
       - '443:443'
     volumes:
       - ./apache/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
-      # - ./apache-config/certs:/opt/bitnami/apache/certs
     tty: true
 
   app:

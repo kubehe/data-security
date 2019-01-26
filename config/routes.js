@@ -3,7 +3,7 @@ const home = require("../app/routes/home");
 const authorization = require("../app/routes/authorization");
 
 exports.set = app => {
-  app.use("/", middlewares.sessionChecker, home);
+  app.use("/", home);
   app.use("/", authorization);
 
   app.use((req, res, next) => {

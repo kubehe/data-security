@@ -1,46 +1,53 @@
-const User = require('../models/user');
+const models = require('../models');
 
 exports.login = (req, res) => {
     let attribute = {
         appName: "",
-        login: true
+        login: true,
+        csrfToken: req.csrfToken()
     };
 
-    res.render("home/login", { attribute });
+    res.render("home/login", attribute);
 }
 
 exports.postLogin =(req, res) => {
-        const username = req.body.name,
+        const name = req.body.name,
             password = req.body.password;
 
-        User.findOne({ where: { name: name } }).then(function (user) {
+        models.User.findOne({ where: { name } }).then(function (user) {
             if (!user || !user.validPassword(password)) {
                 res.redirect('/login');
             } else {
                 req.session.user = user.dataValues;
                 res.redirect('/dashboard');
             }
-                res.redirect('/dashboard');
+        }).catch((error) => {
+          console.log(error);
+          res.redirect('/login');
         });
     };
 
 exports.signup = (req, res) => {
     let attribute = {
         appName: "",
-        login: true
+        login: true,
+        csrfToken: req.csrfToken()
     };
+    console.log("************")
+    console.log("csrf", attribute.csrfToken)
 
-    res.render("home/signup", { attribute });
+    res.render("home/signup", attribute );
 }
 
 exports.postSignup = (req, res) => {
-  User.create({
-      username: req.body.username,
-      email: req.body.email,
+  console.log(req)
+  models.User.create({
+      name: req.body.name,
       password: req.body.password
   })
   .then(user => {
       req.session.user = user.dataValues;
+      console.log(user.dataValues)
       res.redirect('/dashboard');
   })
   .catch(error => {

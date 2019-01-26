@@ -1,7 +1,8 @@
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-const morgan = require("morgan")
+const morgan = require("morgan");
+var csrf = require('csurf');
 
 exports.set = app => {
   app.set("port", process.env.PORT || 3000);
@@ -22,12 +23,10 @@ exports.set = app => {
   );
   // if cookie is set and user is not set -> logout
   app.use((req, res, next) => {
+      console.log("session", req.cookies, req.session )
     if (req.cookies.user_sid && !req.session.user) {
       res.clearCookie("user_sid");
     }
     next();
   });
-//   app.use((req, res, next) => {
-//     res.status(404).send("Error 404. I'm so sorry :/ ");
-//   });
 };
