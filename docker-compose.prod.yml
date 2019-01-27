@@ -11,8 +11,7 @@ services:
       - '443:443'
     volumes:
       - ./apache/httpd.prod.conf:/usr/local/apache2/conf/httpd.conf:ro
-      - ./apache/certs/Server.crt:/usr/local/apache2/conf/server.crt
-      - ./apache/certs/Server.key:/usr/local/apache2/conf/server.key
+      - ./apache/certs/data-security.pem:/usr/local/apache2/conf/server.pem
     tty: true
 
   app:
