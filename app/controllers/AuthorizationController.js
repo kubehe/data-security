@@ -35,8 +35,12 @@ exports.signup = (req, res) => {
 
     res.render("home/signup", attribute );
 }
+const passwordRegExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
 
 exports.postSignup = (req, res) => {
+    if(!passwordRegExp.test(req.body.password)) {
+      res.redirect('/signup');
+    }
   models.User.create({
       name: req.body.name,
       password: req.body.password
