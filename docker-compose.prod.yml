@@ -20,13 +20,8 @@ services:
     depends_on:
       - database
     command: "yarn start"
-    # ports:
-      # - 3000:3000
     expose:
       - 3000
-    volumes:
-      - ./:/usr/src/app:ro
-      - yarn:/home/node/.cache/yarn
     tty: true
     environment: 
       DB_USERNAME: express
@@ -47,10 +42,3 @@ services:
     expose:
       - 5432
     tty: true
-    # only for debug puropses
-    ports:
-      - 5432:5432
-
-volumes:
-  node_modules:
-  yarn:

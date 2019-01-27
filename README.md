@@ -23,7 +23,7 @@ newgrp docker
 apt install -y docker-compose
 ```
 
-Komenda do instalacji: `cd <lokalizacja projektu apache-express> && docker-compose -f docker-compose.yml up -d --build`
+Komenda do instalacji: `cd <lokalizacja projektu apache-express> && docker-compose -f docker-compose.yml up -d`
 
 Aplikacja zostanie zainstalowana i wystawiona na `http://localhost` - jeżeli jakaś aplikacja korzysta z portu 80 to nie zadziała.
 

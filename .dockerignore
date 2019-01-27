@@ -7,6 +7,8 @@ env.*
 docker-compose.yml
 apache-config
 scripts
+node_modules
+yarn.lock
 
 # To prevent storing dev/temporary container data
 /tmp/*
