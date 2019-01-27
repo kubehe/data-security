@@ -3,7 +3,7 @@
 
 ## Przykładowa aplikacja
 
-Przykładowa aplikacja wystawiona jest pod tym urlem: `!todo`
+Przykładowa aplikacja wystawiona jest pod tym urlem: `data-security.cloudapp.net`
 
 ## Sposób instalacji
 
@@ -29,7 +29,7 @@ Aplikacja zostanie zainstalowana i wystawiona na `http://localhost` - jeżeli ja
 
 ## Wykorzystane algorytmy
 
-Do szyfrowania haseł zastosowałem algorytm bcrypt.
+Do szyfrowania haseł zastosowałem algorytm bcrypt z generowaniem soli.
 
 ## Wykorzystane technologie
 
