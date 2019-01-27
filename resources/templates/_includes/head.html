@@ -9,13 +9,13 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
     {% if login %}
-    <link rel="stylesheet" href="assets/css/login.css" />
+    <link rel="stylesheet" href="/assets/css/login.css" />
     {% endif %} 
-    <!-- {% if attribute.authorized %} -->
+    {% if attribute.authorized %}
     <link href="navbar-top-fixed.css" rel="stylesheet" />
-    <!-- {% endif %} -->
+    {% endif %}
   </head>
 
   <body>

@@ -1,18 +1,39 @@
 {% extends "../_layouts/default.html" %} {% block main %}
 
-    <div class="container">
-
-      <form class="form-signin" action="/login" method="post" >
-        <input type="hidden" name="_csrf" value={{csrfToken}}>
-        <h2 class="form-signin-heading">Please log in</h2>
-        <label for="name" class="sr-only">Username</label>
-        <input type="text" id="name" name="name" class="form-control" placeholder="User name" required autofocus>
-        <label for="password" class="sr-only">Password</label>
-        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
-        <a href="/signup">Sign up</a>
-      </form>
-
-    </div> <!-- /container -->
+<div class="container">
+  <div class="row">
+  <form class="form-signin col-auto ml-auto mr-auto mt-4" action="/login" method="post">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+    <h2 class="form-signin-heading">Please log in</h2>
+    <div class="form-group">
+      <label for="name" class="sr-only">Username</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="form-control"
+        placeholder="User name"
+        required
+        autofocus
+      />
+    </div>
+    <div class="form-group">
+      <label for="password" class="sr-only">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="form-control"
+        placeholder="Password"
+        required
+      />
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">
+      Log in
+    </button>
+    <a href="/signup">Sign up</a>
+  </form>
+</div>
+<!-- /container -->
 
 {% endblock %}

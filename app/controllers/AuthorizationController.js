@@ -28,9 +28,21 @@ exports.postLogin =(req, res) => {
 
 exports.signup = (req, res) => {
     let attribute = {
-        appName: "",
+        appName: "Signup in Data Security",
         login: true,
-        csrfToken: req.csrfToken()
+        csrfToken: req.csrfToken(),
+        is_invalid: ""
+    };
+
+    res.render("home/signup", attribute );
+}
+
+exports.signupError = (req, res) => {
+    let attribute = {
+        appName: "Signup in Data Security",
+        login: true,
+        csrfToken: req.csrfToken(),
+        is_invalid: "is-invalid"
     };
 
     res.render("home/signup", attribute );
@@ -41,6 +53,12 @@ exports.postSignup = (req, res) => {
     if(!passwordRegExp.test(req.body.password)) {
       res.redirect('/signup');
     }
+
+    models.User.findOne({where: {name: req.body.name}}).then((user) => {
+        if(user && user.name) {
+            res.redirect("/signup/error");
+        } 
+    })
   models.User.create({
       name: req.body.name,
       password: req.body.password

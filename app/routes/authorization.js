@@ -9,13 +9,19 @@ router.get(
   authorizationController.login
 );
 router.post("/login", middleware.csrf, authorizationController.postLogin);
+router.post("/signup", middleware.csrf, authorizationController.postSignup);
+router.get("/logout", authorizationController.logout);
+router.get(
+  "/signup/error",
+  middleware.sessionChecker,
+  middleware.csrf,
+  authorizationController.signupError
+);
 router.get(
   "/signup",
   middleware.sessionChecker,
   middleware.csrf,
   authorizationController.signup
 );
-router.post("/signup", middleware.csrf, authorizationController.postSignup);
-router.get("/logout", authorizationController.logout);
 
 module.exports = router;
