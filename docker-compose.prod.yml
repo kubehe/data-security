@@ -10,7 +10,9 @@ services:
       - '80:80'
       - '443:443'
     volumes:
-      - ./apache/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
+      - ./apache/httpd.prod.conf:/usr/local/apache2/conf/httpd.conf:ro
+      - ./apache/certs/Server.crt:/usr/local/apache2/conf/server.crt
+      - ./apache/certs/Server.key:/usr/local/apache2/conf/server.key
     tty: true
 
   app:
