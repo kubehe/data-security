@@ -1,5 +1,11 @@
 const bcrypt = require("bcryptjs");
 
+const setPassword = user => {
+  // generating bcrypt password with salt
+  const salt = bcrypt.genSaltSync();
+  user.password = bcrypt.hashSync(user.password, salt);
+};
+
 module.exports = (sequelize, DataTypes) => {
   let User = sequelize.define(
     "User",
@@ -9,11 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       hooks: {
-        beforeCreate: user => {
-          // generating bcrypt password with salt
-          const salt = bcrypt.genSaltSync();
-          user.password = bcrypt.hashSync(user.password, salt);
-        }
+        beforeCreate: setPassword,
+        beforeUpdate: setPassword
       }
     }
   );
