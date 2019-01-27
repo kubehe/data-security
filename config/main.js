@@ -23,7 +23,6 @@ exports.set = app => {
   );
   // if cookie is set and user is not set -> logout
   app.use((req, res, next) => {
-      console.log("session", req.cookies, req.session )
     if (req.cookies.user_sid && !req.session.user) {
       res.clearCookie("user_sid");
     }

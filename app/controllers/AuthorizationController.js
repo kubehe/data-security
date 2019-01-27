@@ -22,7 +22,6 @@ exports.postLogin =(req, res) => {
                 res.redirect('/dashboard');
             }
         }).catch((error) => {
-          console.log(error);
           res.redirect('/login');
         });
     };
@@ -33,21 +32,17 @@ exports.signup = (req, res) => {
         login: true,
         csrfToken: req.csrfToken()
     };
-    console.log("************")
-    console.log("csrf", attribute.csrfToken)
 
     res.render("home/signup", attribute );
 }
 
 exports.postSignup = (req, res) => {
-  console.log(req)
   models.User.create({
       name: req.body.name,
       password: req.body.password
   })
   .then(user => {
       req.session.user = user.dataValues;
-      console.log(user.dataValues)
       res.redirect('/dashboard');
   })
   .catch(error => {
