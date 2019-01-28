@@ -3,7 +3,7 @@
 
 ## Przykładowa aplikacja
 
-Przykładowa aplikacja wystawiona jest pod tym urlem: [data-security.cloudapp.net](data-security.cloudapp.net)
+Przykładowa aplikacja wystawiona jest pod tym urlem: [data-security.cloudapp.net](https://data-security.cloudapp.net)
 
 ## Sposób instalacji
 
